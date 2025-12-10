@@ -1,0 +1,6 @@
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1       10.176.161.15   YES DHCP   up                    up
+Protocol  Address          Age (min)  Hardware Addr   Type   Interface
+Internet  10.176.160.1            0   001c.7f81.050f  ARPA   GigabitEthernet1
+Internet  10.176.160.174         18   7497.79c3.4009  ARPA   GigabitEthernet1
+Internet  10.176.161.15           -   0800.278b.b80f  ARPA   GigabitEthernet1
