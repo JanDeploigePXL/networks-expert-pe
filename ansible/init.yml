@@ -1,0 +1,4 @@
+- name: Server Ansible Script
+  hosts: all
+  roles:
+    - lab
