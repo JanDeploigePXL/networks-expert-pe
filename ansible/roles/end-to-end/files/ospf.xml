@@ -1,0 +1,16 @@
+<config>
+  <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+    <router>
+      <ospf>
+        <id>{{ ospf_process_id }}</id>
+        {% for net in ospf_networks %}
+        <network>
+          <ip>{{ net.network }}</ip>
+          <mask>{{ net.wildcard }}</mask>
+          <area>{{ net.area }}</area>
+        </network>
+        {% endfor %}
+      </ospf>
+    </router>
+  </native>
+</config>

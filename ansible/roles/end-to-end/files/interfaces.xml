@@ -1,0 +1,36 @@
+<!-- <config>
+  <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+    <interface>
+      <GigabitEthernet>
+        <name>1</name>
+        <description>Configured via Ansible NETCONF</description>
+        <ip>
+          <address>
+            <primary>
+              <address>192.168.1.1</address>
+              <mask>255.255.255.0</mask>
+            </primary>
+          </address>
+        </ip>
+      </GigabitEthernet>
+    </interface>
+  </native>
+</config> -->
+<config>
+  <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+    <interface>
+      <Loopback>
+        <name>1</name>
+        <description>Test loopback</description>
+        <ip>
+          <address>
+            <primary>
+              <address>10.1.1.1</address>
+              <mask>255.255.255.0</mask>
+            </primary>
+          </address>
+        </ip>
+      </Loopback>
+    </interface>
+  </native>
+</config>

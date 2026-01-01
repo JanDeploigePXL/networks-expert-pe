@@ -3,5 +3,5 @@ all:
     device1:
       ansible_host: 192.168.129.149
       ansible_connection: ansible.netcommon.netconf
-      ansible_user: admin
-      ansible_password: pxl
+      ansible_user: cisco
+      ansible_password: cisco123!

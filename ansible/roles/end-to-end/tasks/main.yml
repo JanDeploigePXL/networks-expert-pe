@@ -1,0 +1,29 @@
+---
+- name: "Set hostname"
+  ansible.netcommon.netconf_config:
+    content: "{{ lookup('file', role_path + '/files/base_system.xml') }}"
+    target: running # candidate
+    commit: yes
+
+- name: "Configure interfaces"
+  ansible.netcommon.netconf_config:
+    content: "{{ lookup('file', role_path + '/files/interfaces.xml') }}"
+    target: running # candidate
+    commit: yes
+
+- name: "Configure OSPF"
+  ansible.netcommon.netconf_config:
+    content: "{{ lookup('file', role_path + '/files/ospf.xml') }}"
+    target: running # candidate
+    commit: yes
+  when: enable_ospf
+
+- name: "Get running config"
+  ansible.netcommon.netconf_get:
+    source: running
+  register: running_cfg
+
+- name: "Save backup of running config"
+  copy:
+    content: "{{ running_cfg }}"
+    dest: "./backups/{{ inventory_hostname }}_running_{{ ansible_date_time.iso8601 }}.xml"

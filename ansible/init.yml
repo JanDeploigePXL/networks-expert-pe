@@ -1,4 +1,4 @@
 - name: Server Ansible Script
   hosts: all
   roles:
-    - lab
+    - end-to-end
