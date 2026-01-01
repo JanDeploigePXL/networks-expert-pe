@@ -1,0 +1,71 @@
+---
+- name: Get interface operational data
+  ansible.netcommon.netconf_get:
+    filter: |
+      <interfaces xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper"/>
+  register: interface_state
+
+- name: Set hostname
+  ansible.netcommon.netconf_config:
+    content: |
+      <config>
+        <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+          <hostname>device1</hostname>
+        </native>
+      </config>
+
+- name: Get running config
+  ansible.netcommon.netconf_get:
+    source: running
+  register: run_cfg
+
+- debug:
+    var: run_cfg
+
+- name: Save running config
+  copy:
+    content: "{{ run_cfg }}"
+    dest: "./backups/device1_running.xml"
+
+- name: Get full running config
+  ansible.netcommon.netconf_get:
+    source: running
+  register: backup
+
+- debug:
+    var: backup
+    
+- name: Save backup
+  copy:
+    content: "{{ backup }}"
+    dest: "./backups/device1_backup_{{ ansible_date_time.iso8601 }}.xml"
+
+# - name: Push external config
+#   ansible.netcommon.netconf_config:
+#     content: "{{ lookup('file', role_path + '/files/external_config.xml') }}"
+
+# - name: Apply interface subset
+#   ansible.netcommon.netconf_config:
+#     content: "{{ lookup('template', 'interface_subset.j2') }}"
+
+- name: Get system info
+  ansible.netcommon.netconf_get:
+    filter: |
+      <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native"/>
+  register: sysinfo
+
+- debug:
+    var: sysinfo
+
+- name: Set domain name
+  ansible.netcommon.netconf_config:
+    content: |
+      <config>
+        <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+          <ip>
+            <domain>
+              <name>ansible.lab</name>
+            </domain>
+          </ip>
+        </native>
+      </config>

@@ -1,9 +1,7 @@
 all:
-  children:
-    routers:
-      hosts:
-        r1:
-          ansible_host: 10.125.100.229
-          ansible_user: student
-          ansible_password: pass
-          ansible_connection: ansible.netcommon.netconf
+  hosts:
+    device1:
+      ansible_host: 192.168.129.149
+      ansible_connection: ansible.netcommon.netconf
+      ansible_user: admin
+      ansible_password: pxl

@@ -1,0 +1,11 @@
+<config xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+    <interface nc:operation="merge">
+      <GigabitEthernet>
+        <name>1</name>
+        <description>Configured via external file</description>
+        <shutdown nc:operation="remove"/>
+      </GigabitEthernet>
+    </interface>
+  </native>
+</config>

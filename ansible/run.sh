@@ -1,2 +1,2 @@
 #!/bin/bash
-ansible-playbook -i inventory/hosts --ask-vault-pass init.yml
+ansible-playbook init.yml -i inventory.yml
