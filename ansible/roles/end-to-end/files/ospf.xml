@@ -1,16 +1,21 @@
 <config>
   <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+
+    <!-- Hostname -->
+    <hostname>ROUTER1</hostname>
+    
+    <!-- OSPF configuration -->
     <router>
-      <ospf>
-        <id>{{ ospf_process_id }}</id>
-        {% for net in ospf_networks %}
+      <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+        <id>1</id>
+        <router-id>1.1.1.1</router-id>
         <network>
-          <ip>{{ net.network }}</ip>
-          <mask>{{ net.wildcard }}</mask>
-          <area>{{ net.area }}</area>
+          <ip>192.168.1.90</ip>
+          <mask>255.255.255.255</mask>
+          <area>0</area>
         </network>
-        {% endfor %}
       </ospf>
     </router>
+
   </native>
 </config>

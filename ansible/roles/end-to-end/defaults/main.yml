@@ -1,10 +1,17 @@
----
 # Standaardvariabelen
 hostname: "device1"
 domain_name: "ansible.lab"
 enable_ospf: true
 ospf_process_id: 1
 ospf_networks:
-  - network: "192.168.0.0"
-    wildcard: "0.0.255.255"
+  - interface: "Loopback0"
+    network: "10.0.0.1"
+    wildcard: "0.0.0.0"
     area: 0
+loopbacks:
+  - number: 0
+    ip: 10.0.0.1
+    mask: 255.255.255.0
+  - number: 1
+    ip: 10.1.1.1
+    mask: 255.255.255.0
